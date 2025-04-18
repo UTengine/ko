@@ -493,7 +493,7 @@ int64_t CN3UIString::GetStringAsInt(const std::vector<char> & remove /* = {}*/) 
 
 int CN3UIString::GetStringRealWidth(int iNum) {
     SIZE size{};
-    BOOL bFlag = m_pDFont->GetTextExtent("Arial", lstrlen("Arial"), &size);
+    BOOL bFlag = m_pDFont->GetTextExtent("가", lstrlen("가"), &size);
     __ASSERT(bFlag, "cannot get size of dfont");
     int iLength = iNum / 2;
     if (iLength == 0) {
@@ -504,7 +504,7 @@ int CN3UIString::GetStringRealWidth(int iNum) {
 
 int CN3UIString::GetStringRealWidthRect() {
     SIZE size{};
-    BOOL bFlag = m_pDFont->GetTextExtent("Arial", lstrlen("Arial"), &size);
+    BOOL bFlag = m_pDFont->GetTextExtent("가", lstrlen("가"), &size);
     __ASSERT(bFlag, "cannot get size of dfont");
 
     return (size.cy > 0) ? (m_rcRegion.bottom - m_rcRegion.top) / size.cy : 0;
