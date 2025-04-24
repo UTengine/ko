@@ -228,10 +228,12 @@ bool CMagicSkillMng::CheckValidSkillMagic(__TABLE_UPC_SKILL * pSkill) {
     int LeftItem1 = LeftItem / 10;
     int RightItem1 = RightItem / 10;
 
-    if (pSkill->dwNeedItem != 0 && pSkill->dwNeedItem != LeftItem1 && pSkill->dwNeedItem != RightItem1) {
+    if (pSkill->dwNeedItem != 0 && pSkill->dwNeedItem != 9 && pSkill->dwNeedItem != LeftItem1 &&
+        pSkill->dwNeedItem != RightItem1) {
         return false;
     }
-    if (pSkill->dwNeedItem == 0 && (pSkill->dw1stTableType == 1 || pSkill->dw2ndTableType == 1)) {
+    if (pSkill->dwNeedItem == 0 && pSkill->dwNeedItem != 9 &&
+        (pSkill->dw1stTableType == 1 || pSkill->dw2ndTableType == 1)) {
         if (LeftItem != 11 && (LeftItem1 < 1 || LeftItem1 > 5) && RightItem1 != 11 &&
             (RightItem1 < 1 || RightItem1 > 5)) {
             return false;
@@ -588,13 +590,15 @@ bool CMagicSkillMng::CheckValidCondition(int iTargetID, __TABLE_UPC_SKILL * pSki
     int LeftItem1 = LeftItem / 10;
     int RightItem1 = RightItem / 10;
 
-    if (pSkill->dwNeedItem != 0 && pSkill->dwNeedItem != LeftItem1 && pSkill->dwNeedItem != RightItem1) {
+    if (pSkill->dwNeedItem != 0 && pSkill->dwNeedItem != 9 && pSkill->dwNeedItem != 9 &&
+        pSkill->dwNeedItem != LeftItem1 && pSkill->dwNeedItem != RightItem1) {
         std::string buff;
         ::_LoadStringFromResource(IDS_SKILL_FAIL_INVALID_ITEM, buff);
         m_pGameProcMain->MsgOutput(buff, 0xffffff00);
         return false;
     }
-    if (pSkill->dwNeedItem == 0 && (pSkill->dw1stTableType == 1 || pSkill->dw2ndTableType == 1)) {
+    if (pSkill->dwNeedItem == 0 && pSkill->dwNeedItem != 9 &&
+        (pSkill->dw1stTableType == 1 || pSkill->dw2ndTableType == 1)) {
         if (LeftItem != 11 && (LeftItem1 < 1 || LeftItem1 > 5) && RightItem1 != 11 &&
             (RightItem1 < 1 || RightItem1 > 5)) {
             std::string buff;
